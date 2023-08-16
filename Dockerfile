@@ -45,6 +45,12 @@ RUN trivy --version
 RUN (pip3 install checkov packaging==21.3 && checkov --version) || echo Failed to install optional Checkov
 
 COPY --from=builder /build/src/bin/dashboard /bin/helm-dashboard
+ENV USER=orwork
+RUN addgroup --gid 999 ${USER} && \
+    adduser --no-create-home --uid 999 --gecos "${USER} user" --home "/build" --gid 1000 --disabled-password ${USER} && \
+    chown -R ${USER}:${USER} /app
+
+USER ${USER}:${USER}
 
 ENTRYPOINT ["/bin/helm-dashboard", "--no-browser", "--bind=0.0.0.0", "--port=8080"]
 

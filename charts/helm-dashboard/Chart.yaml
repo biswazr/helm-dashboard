@@ -2,7 +2,7 @@ apiVersion: v2
 type: application
 
 name: helm-dashboard
-description: A GUI Dashboard for Helm by Komodor
+description: A GUI Dashboard for Helm by Komodor (forked by biswazr)
 icon: "https://raw.githubusercontent.com/komodorio/helm-dashboard/main/pkg/dashboard/static/logo.svg"
 
 version: 0.1.10
